@@ -30,8 +30,7 @@ function App() {
          </div>
           </>
         )
-        })
-      }
+      }}
          <button onClick={()=>{ //글수정 버튼 copy 생성해서 오류 잡기
          let copy = [...글제목];
          copy[1] = '여자 코트 추천';

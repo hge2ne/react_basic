@@ -23,14 +23,16 @@ function App() {
       {
       글제목.map(function(a,i){
         return (
+          <>
          <div className="list" key={i}>
-          <h4 onClick={()=>{setmodal(true)};settitle(i)}><span onClick={(e)=>{붐따(붐따변경[i]+1)}}>좋아요👍{붐따[i]} </span></h4>
-          <p>2월 17일 발행</p>      
-       </div>
+           <h4 onClick={()=>{setmodal(true)};settitle(i)}><span onClick={(e)=>{붐따(붐따변경[i]+1)}}>좋아요👍{붐따[i]} </span></h4>
+           <p>2월 17일 발행</p>      
+         </div>
+          </>
         )
         })
       }
-     <button onClick={()=>{ //글수정 버튼 copy 생성해서 오류 잡기
+         <button onClick={()=>{ //글수정 버튼 copy 생성해서 오류 잡기
          let copy = [...글제목];
          copy[1] = '여자 코트 추천';
          set글제목(copy);

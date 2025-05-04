@@ -13,6 +13,7 @@ function App() {
   let [붐따, 붐따변경] = useState([0, 0, 0]); //배열로 선언하는이유 : 각 게시글별 좋아요수치 저장. 그래야 [붐따[0] 할수있다
   let [modal, setmodal] = useState(false); // 펑션함수 안에 위치
   let [title, settitle] = useState(0);
+  let []
 
   //글제목, b는 각각 작명 가능
 
@@ -66,7 +67,7 @@ function App() {
 
   function Modal(props) {
     return (
-      <div className="modal">
+      <div className="modal" style={{background : props.color}}>
         <h4>{props.글제목[props.title]}</h4>
         <p>상세페이지 내용</p>
       </div>

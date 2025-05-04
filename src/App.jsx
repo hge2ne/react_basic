@@ -6,9 +6,9 @@ import "./App.css";
 function App() {
   // let post = '강남 우동 맛집'; 변수 선언법
   let [글제목, set글제목] = useState([
-    "강남 우동 맛집",
-    "남자 코트 추천",
-    "아보카도 커피 맛집",
+    "강남 우동 맛집     ",
+    "남자 코트 추천     ",
+    "아보카도 커피 맛집     ",
   ]);
   let [붐따, 붐따변경] = useState([0, 0, 0]); //배열로 선언하는이유 : 각 게시글별 좋아요수치 저장. 그래야 [붐따[0] 할수있다
   let [modal, setmodal] = useState(false); // 펑션함수 안에 위치
@@ -25,21 +25,28 @@ function App() {
       {글제목.map(function (a, i) {
         return (
           <div className="list" key={i}>
-            <h4 onClick={()=>{setmodal(true); settitle(i);}}>
+            <h4 onClick={(e)=>{setmodal(true); settitle(i);}}>
+            {a}
               <span
                 onClick={(e) => {
-                  붐따(붐따변경[i] + 1);
+                  e.stopPropagation();//이벤트 버블링 방지
+                  let copy =[...붐따];
+                  copy[i]= copy[i] + 1;
+                  붐따변경(copy);//꼭 set변수이름 
                 }}
               >
-                좋아요👍{붐따[i]}{" "}
+               좋아요👍{붐따[i]}{" "}
               </span>
-            
             </h4>
             <p>2월 17일 발행</p>
           </div>
+
           
-        );
-      })}
+        )
+    } 
+          
+        )
+      }
       <button
         onClick={() => {
           //글수정 버튼 copy 생성해서 오류 잡기
@@ -50,9 +57,12 @@ function App() {
       >
         수정버튼
       </button>
-      {modal === true ? <Modal title={title} 글제목={글제목} /> : null}
+      {
+      modal === true ? <Modal title={title} 글제목={글제목} /> : null
+      }
     </div>
   );
+}
 
   function Modal(props) {
     return (
@@ -74,6 +84,6 @@ onCLick 함수 방법2
 원본 수정 X
 원본 있는 위치를 알려주는 화살표 수정을 해*/
   }
-}
+
 
 export default App; //이 파일(App.jsx)에서 App이라는 컴포넌트를 기본(default)으로 외부에 내보냄. 이라는 뜻
